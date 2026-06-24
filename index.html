@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PDF Page Editor</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Local PDF Tool</p>
+        <h1>PDF Page Editor</h1>
+      </div>
+      <div class="header-actions">
+        <label class="button primary">
+          PDF 열기
+          <input id="openPdfInput" type="file" accept="application/pdf" hidden />
+        </label>
+        <label id="mergeDropTarget" class="button">
+          파일 추가
+          <input id="mergePdfInput" type="file" accept="application/pdf" multiple hidden />
+        </label>
+        <label id="insertDropTarget" class="button">
+          삽입
+          <input id="insertPdfInput" type="file" accept="application/pdf" multiple hidden />
+        </label>
+        <button id="downloadButton" class="button accent" disabled>저장</button>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <aside class="sidebar">
+        <div class="panel-title">
+          <span>페이지</span>
+          <span id="pageCountBadge" class="badge">0</span>
+        </div>
+        <div id="thumbnailList" class="thumbnail-list">
+          <div class="empty-state small">PDF를 열면 페이지 목록이 표시됩니다.</div>
+        </div>
+      </aside>
+
+      <section class="viewer-panel">
+        <div class="toolbar">
+          <button id="closePreviewButton" class="button compact">닫기</button>
+          <button id="rotateButton" class="button compact" disabled>90도 회전</button>
+          <div class="spacer"></div>
+          <label class="zoom-control">
+            확대
+            <input id="zoomInput" type="range" min="70" max="160" value="100" />
+            <span id="zoomLabel">100%</span>
+          </label>
+        </div>
+
+        <div id="dropZone" class="drop-zone">
+          <div id="emptyState" class="empty-state">
+            <strong>PDF 파일을 드래그하거나 “PDF 열기”를 눌러 시작하세요.</strong>
+            <span>페이지 삭제, 회전, 순서 변경, 빈 페이지 추가, 다른 PDF 병합 후 저장할 수 있습니다.</span>
+          </div>
+          <canvas id="pageCanvas" class="page-canvas" hidden></canvas>
+        </div>
+      </section>
+    </main>
+
+    <footer class="status-bar app-status">
+      <span id="statusText">준비됨</span>
+      <span id="currentPageText"></span>
+    </footer>
+
+    <div id="selectionBox" class="selection-box" hidden></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
