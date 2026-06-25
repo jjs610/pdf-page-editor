@@ -11,18 +11,21 @@
       <div>
         <p class="eyebrow">Local PDF Tool</p>
         <h1>PDF Page Editor</h1>
+        <p class="header-help">PDF 파일은 화면에 드롭하면 새로 열리고, 아래 버튼 위에 드롭하면 추가/삽입됩니다.</p>
       </div>
       <div class="header-actions">
         <label class="button primary">
           PDF 열기
           <input id="openPdfInput" type="file" accept="application/pdf" hidden />
         </label>
-        <label id="mergeDropTarget" class="button">
-          파일 추가
+        <label id="mergeDropTarget" class="button drop-target-button" title="클릭해서 선택하거나 PDF 파일을 이 버튼 위에 드롭하면 맨 뒤에 추가됩니다.">
+          <span class="button-main">파일 추가</span>
+          <span class="button-sub">클릭 또는 드롭</span>
           <input id="mergePdfInput" type="file" accept="application/pdf" multiple hidden />
         </label>
-        <label id="insertDropTarget" class="button">
-          삽입
+        <label id="insertDropTarget" class="button drop-target-button" title="클릭해서 선택하거나 PDF 파일을 이 버튼 위에 드롭하면 선택 페이지 뒤에 삽입됩니다.">
+          <span class="button-main">삽입</span>
+          <span class="button-sub">클릭 또는 드롭</span>
           <input id="insertPdfInput" type="file" accept="application/pdf" multiple hidden />
         </label>
         <button id="downloadButton" class="button accent" disabled>저장</button>

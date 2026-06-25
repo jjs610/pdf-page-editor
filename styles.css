@@ -38,9 +38,9 @@ input {
 
 .app-header {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 16px;
   padding: 26px 34px 18px;
 }
 
@@ -59,10 +59,19 @@ h1 {
   line-height: 1.1;
 }
 
+.header-help {
+  max-width: 620px;
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
 .header-actions,
 .toolbar {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 10px;
   flex-wrap: wrap;
 }
@@ -93,11 +102,36 @@ h1 {
   transform: translateY(-1px);
 }
 
+.drop-target-button {
+  flex-direction: column;
+  gap: 2px;
+  min-height: 52px;
+  border-style: dashed;
+  border-color: #9fb0d8;
+  background:
+    linear-gradient(180deg, rgba(49, 87, 213, 0.06), rgba(255, 255, 255, 0.94));
+}
+
+.button-main {
+  line-height: 1.1;
+}
+
+.button-sub {
+  color: var(--primary);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+
 .button.drop-ready {
   border-color: var(--accent);
   background: #eaf8f3;
   box-shadow: 0 0 0 4px rgba(21, 147, 111, 0.16);
   transform: translateY(-1px);
+}
+
+.button.drop-ready .button-sub {
+  color: var(--accent);
 }
 
 .button:disabled {
